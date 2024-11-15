@@ -1,6 +1,6 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 <p align="center">
-    <img src="https://envs.sh/TAl.jpg">
+    <img src="https://files.catbox.moe/iou8gw.jpg">
 </p>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
@@ -16,7 +16,7 @@
     ─「 ᴅᴇᴩʟᴏʏ ᴏɴ ʜᴇʀᴏᴋᴜ 」─
 </h3>
 
-<p align="center"><a href="https://dashboard.heroku.com/new?template=https://github.com/THE-VIP-BOY-OP/VIP-CHATBOT"> <img src="https://img.shields.io/badge/Deploy%20On%20Heroku-green?style=for-the-badge&logo=heroku" width="320" height="138.45"/></a></p>
+<p align="center"><a href="https://dashboard.heroku.com/new?template=https://github.com/Rani0086/Chatgptgoniwork"> <img src="https://img.shields.io/badge/Deploy%20On%20Heroku-green?style=for-the-badge&logo=heroku" width="320" height="138.45"/></a></p>
 
 
 
@@ -26,16 +26,16 @@
 
 <h3 align="center">
     
-[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?name=vip-chatbot&type=git&repository=THE-VIP-BOY-OP%2FVIP-CHATBOT&branch=main&builder=dockerfile&env%5BBOT_TOKEN%5D=&env%5BMONGO_URL%5D=&env%5BOWNER_ID%5D=&ports=8000%3Bhttp%3B%2F)
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?name=Chatgptgoniwork&type=git&repository=rani0086%2Chatgptgoniwork&branch=main&builder=dockerfile&env%5BBOT_TOKEN%5D=&env%5BMONGO_URL%5D=&env%5BOWNER_ID%5D=&ports=8000%3Bhttp%3B%2F)
 
 </h3>
 
 
 ### Contact:
-<a href="https://t.me/THE_VIP_BOY_OP">
-    <img title="Telegram" src="https://img.shields.io/badge/Telegram-%23000000.svg?&style=for-the-badge&logo=telegram&logoColor=61DAFB">
-</a>
-<a href="https://instagram.com/the.vip.boy">
-    <img title="Instagram" src="https://img.shields.io/badge/instagram-%23E4405F.svg?&style=for-the-badge&logo=instagram&logoColor=white">
+<a href="https://t.me/xeno_kakarot">
+    <img title="Son Goku" src="https://img.shields.io/badge/Telegram-%23000000.svg?&style=for-the-badge&logo=telegram&logoColor=61DAFB">
+</a></p>
+<a href="https://instagram.com/The_saiyans_prince">
+    <img title="Prince vegeta" src="https://img.shields.io/badge/instagram-%23E4405F.svg?&style=for-the-badge&logo=telegram &logoColor=white">
 </a>
 
