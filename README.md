@@ -33,9 +33,9 @@
 
 ### Contact:
 <a href="https://t.me/xeno_kakarot">
-    <img title="Son Goku" src="https://img.shields.io/badge/Telegram-%23000000.svg?&style=for-the-badge&logo=telegram&logoColor=61DAFB">
+    <img title="telegram" src="https://img.shields.io/badge/Son goku-%23000000.svg?&style=for-the-badge&logo=telegram&logoColor=61DAFB">
 </a></p>
 <a href="https://instagram.com/The_saiyans_prince">
-    <img title="Prince vegeta" src="https://img.shields.io/badge/telegram-%23E4405F.svg?&style=for-the-badge&logo=telegram &logoColor=white">
+    <img title="telegram" src="https://img.shields.io/badge/Prince vegeta-%23E4405F.svg?&style=for-the-badge&logo=telegram &logoColor=white">
 </a>
 
