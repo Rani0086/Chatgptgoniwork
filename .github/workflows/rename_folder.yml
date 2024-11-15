@@ -18,7 +18,7 @@ jobs:
           # Ensure the folder exists before trying to rename it
           if [ -d "nexichat" ]; then
             mv nexichat GONI
-            find . -type f -name "*.py" -exec sed -i 's/nexichat/GONI/g' {} +
+            find . -type f -name "*.py" -exec sed -i 's/GONI/GONI/g' {} +
           else
             echo "Folder nexichat does not exist."
           fi
