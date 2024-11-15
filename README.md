@@ -36,6 +36,6 @@
     <img title="Son Goku" src="https://img.shields.io/badge/Telegram-%23000000.svg?&style=for-the-badge&logo=telegram&logoColor=61DAFB">
 </a></p>
 <a href="https://instagram.com/The_saiyans_prince">
-    <img title="Prince vegeta" src="https://img.shields.io/badge/instagram-%23E4405F.svg?&style=for-the-badge&logo=telegram &logoColor=white">
+    <img title="Prince vegeta" src="https://img.shields.io/badge/telegram-%23E4405F.svg?&style=for-the-badge&logo=telegram &logoColor=white">
 </a>
 
