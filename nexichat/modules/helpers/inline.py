@@ -1,14 +1,14 @@
 from pyrogram.types import InlineKeyboardButton
 
 from config import SUPPORT_GRP, UPDATE_CHNL
-from nexichat import OWNER, nexichat
+from GONI import OWNER, GONI
 
 
 START_BOT = [
     [
         InlineKeyboardButton(
             text="😍 ᴀᴅᴅ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ 😍",
-            url=f"https://t.me/{nexichat.username}?startgroup=true",
+            url=f"https://t.me/{GONI.username}?startgroup=true",
         ),
     ],
     [
@@ -29,7 +29,7 @@ DEV_OP = [
     [
         InlineKeyboardButton(
             text="✦ ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ ✦",
-            url=f"https://t.me/{nexichat.username}?startgroup=true",
+            url=f"https://t.me/{GONI.username}?startgroup=true",
         ),
     ],
     [
@@ -45,7 +45,7 @@ PNG_BTN = [
     [
         InlineKeyboardButton(
             text="😍 ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ 😍",
-            url=f"https://t.me/{nexichat.username}?startgroup=true",
+            url=f"https://t.me/{GONI.username}?startgroup=true",
         ),
     ],
     [
@@ -123,7 +123,7 @@ HELP_START = [
 HELP_BUTN = [
     [
         InlineKeyboardButton(
-            text="« ʜᴇʟᴘ »", url=f"https://t.me/{nexichat.username}?start=help"
+            text="« ʜᴇʟᴘ »", url=f"https://t.me/{GONI.username}?start=help"
         ),
         InlineKeyboardButton(text="⦿ ᴄʟᴏsᴇ ⦿", callback_data="CLOSE"),
     ],

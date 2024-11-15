@@ -4,11 +4,11 @@ from pyrogram.enums import ParseMode
 from pyrogram import Client, filters
 from pyrogram.errors.exceptions.bad_request_400 import AccessTokenExpired, AccessTokenInvalid
 import config
-from nexichat.mplugin.helpers import is_owner
+from GONI.mplugin.helpers import is_owner
 from config import API_HASH, API_ID, OWNER_ID
-from nexichat import CLONE_OWNERS
-from nexichat import nexichat as app
-from nexichat import db as mongodb
+from GONI import CLONE_OWNERS
+from GONI import GONI as app
+from GONI import db as mongodb
 
 CLONES = set()
 cloneownerdb = mongodb.cloneownerdb
@@ -23,7 +23,7 @@ async def clone_txt(client, message):
         bot_token = message.text.split("/clone", 1)[1].strip()
         mi = await message.reply_text("Please wait while I check the bot token.")
         try:
-            ai = Client(bot_token, API_ID, API_HASH, bot_token=bot_token, plugins=dict(root="nexichat/mplugin"))
+            ai = Client(bot_token, API_ID, API_HASH, bot_token=bot_token, plugins=dict(root="GONI/mplugin"))
             await ai.start()
             bot = await ai.get_me()
             bot_id = bot.id

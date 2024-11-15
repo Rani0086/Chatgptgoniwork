@@ -1,4 +1,4 @@
-from nexichat import db as mongodb
+from GONI import db as mongodb
 
 cloneownerdb = mongodb.cloneownerdb
 clonebotdb = mongodb.clonebotdb
@@ -9,11 +9,11 @@ async def save_clonebot_owner(bot_id, user_id):
     await cloneownerdb.insert_one({"bot_id": bot_id, "user_id": user_id})
 
 def get_bot_users_collection(bot_id):
-    from nexichat import db as mongodb
+    from GONI import db as mongodb
     return mongodb[f"{bot_id}_users"]
 
 def get_bot_chats_collection(bot_id):
-    from nexichat import db as mongodb
+    from GONI import db as mongodb
     return mongodb[f"{bot_id}_chats"]
 
 async def is_served_cuser(bot_id, user_id: int) -> bool:

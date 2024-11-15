@@ -4,19 +4,19 @@ import random
 import time
 import psutil
 import config
-from nexichat import _boot_
-from nexichat import get_readable_time
-from nexichat import nexichat, mongo
+from GONI import _boot_
+from GONI import get_readable_time
+from GONI import GONI, mongo
 from datetime import datetime
 from pymongo import MongoClient
 from pyrogram.enums import ChatType
 from pyrogram import Client, filters
 from config import OWNER_ID, MONGO_URL, OWNER_USERNAME
 from pyrogram.errors import FloodWait, ChatAdminRequired
-from nexichat.database.chats import get_served_chats, add_served_chat
-from nexichat.database.users import get_served_users, add_served_user
+from GONI.database.chats import get_served_chats, add_served_chat
+from GONI.database.users import get_served_users, add_served_user
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
-from nexichat.modules.helpers import (
+from GONI.modules.helpers import (
     START,
     START_BOT,
     PNG_BTN,
@@ -69,7 +69,7 @@ IMG = [
 
 
 
-from nexichat import db
+from GONI import db
 
 chatai = db.Word.WordDb
 lang_db = db.ChatLangDb.LangCollection
@@ -104,7 +104,7 @@ from pyrogram.types import Chat
 async def set_group_language(chat: Chat):
     messages = []
     
-    async for message in nexichat.get_chat_history(chat.id, limit=50):
+    async for message in GONI.get_chat_history(chat.id, limit=50):
         if message.text and not message.from_user.is_bot:
             messages.append(message.text)
 
@@ -118,12 +118,12 @@ async def set_group_language(chat: Chat):
     
     if max_lang_percentage > 50:
         await lang_db.update_one({"chat_id": chat.id}, {"$set": {"language": most_common_lang}}, upsert=True)
-        await nexichat.send_message(
+        await GONI.send_message(
             chat.id, 
             f"This chat language has been set to {most_common_lang.title()} ({most_common_lang})."
         )
 
-@nexichat.on_message(filters.new_chat_members)
+@GONI.on_message(filters.new_chat_members)
 async def welcomejej(client, message: Message):
     chat = message.chat
     await add_served_chat(message.chat.id)
@@ -133,7 +133,7 @@ async def welcomejej(client, message: Message):
     try:
         for member in message.new_chat_members:
             
-            if member.id == nexichat.id:
+            if member.id == GONI.id:
                 try:
                     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("sᴇʟᴇᴄᴛ ʟᴀɴɢᴜᴀɢᴇ", callback_data="choose_lang")]])    
                     await message.reply_text(text="**тнαикѕ ꜰᴏʀ ᴀᴅᴅɪɴɢ ᴍᴇ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴩ.**\n\n**ᴋɪɴᴅʟʏ  ꜱᴇʟᴇᴄᴛ  ʙᴏᴛ  ʟᴀɴɢᴜᴀɢᴇ  ꜰᴏʀ  ᴛʜɪꜱ  ɢʀᴏᴜᴩ  ʙʏ  ᴛʏᴩᴇ  ☞  /lang**", reply_markup=reply_markup)
@@ -141,14 +141,14 @@ async def welcomejej(client, message: Message):
                     print(f"{e}")
                     pass
                 try:
-                    invitelink = await nexichat.export_chat_invite_link(message.chat.id)
+                    invitelink = await GONI.export_chat_invite_link(message.chat.id)
                                                                         
                     link = f"[ɢᴇᴛ ʟɪɴᴋ]({invitelink})"
                 except ChatAdminRequired:
                     link = "No Link"
                     
                 try:
-                    groups_photo = await nexichat.download_media(
+                    groups_photo = await GONI.download_media(
                         chat.photo.big_file_id, file_name=f"chatpp{chat.id}.png"
                     )
                     chat_photo = (
@@ -159,7 +159,7 @@ async def welcomejej(client, message: Message):
                 except Exception as e:
                     pass
 
-                count = await nexichat.get_chat_members_count(chat.id)
+                count = await GONI.get_chat_members_count(chat.id)
                 chats = len(await get_served_chats())
                 username = chat.username if chat.username else "𝐏ʀɪᴠᴀᴛᴇ 𝐆ʀᴏᴜᴘ"
                 msg = (
@@ -176,7 +176,7 @@ async def welcomejej(client, message: Message):
                 try:
                     OWNER = config.OWNER_ID
                     if OWNER:
-                        await nexichat.send_photo(
+                        await GONI.send_photo(
                             int(OWNER_ID),
                             photo=chat_photo,
                             caption=msg,
@@ -185,7 +185,7 @@ async def welcomejej(client, message: Message):
                     
                 except Exception as e:
                     print(f"Please Provide me correct owner id for send logs")
-                    await nexichat.send_photo(
+                    await GONI.send_photo(
                         int(OWNER_ID),
                         photo=chat_photo,
                         caption=msg,
@@ -199,7 +199,7 @@ import os
 import time
 import io
 
-@nexichat.on_cmd(["ls"])
+@GONI.on_cmd(["ls"])
 async def ls(_, m: Message):
     "To list all files and folders."
 
@@ -273,7 +273,7 @@ async def ls(_, m: Message):
         await m.reply_text(msg)
 
 
-@nexichat.on_cmd(["start", "aistart"])
+@GONI.on_cmd(["start", "aistart"])
 async def start(_, m: Message):
     users = len(await get_served_users())
     chats = len(await get_served_chats())
@@ -330,7 +330,7 @@ async def start(_, m: Message):
         chat_photo = BOT  
         if m.chat.photo:
             try:
-                userss_photo = await nexichat.download_media(m.chat.photo.big_file_id)
+                userss_photo = await GONI.download_media(m.chat.photo.big_file_id)
                 await umm.delete()
                 if userss_photo:
                     chat_photo = userss_photo
@@ -340,10 +340,10 @@ async def start(_, m: Message):
         users = len(await get_served_users())
         chats = len(await get_served_chats())
         UP, CPU, RAM, DISK = await bot_sys_stats()
-        await m.reply_photo(photo=chat_photo, caption=START.format(nexichat.mention or "can't mention", users, chats, UP), reply_markup=InlineKeyboardMarkup(START_BOT))
+        await m.reply_photo(photo=chat_photo, caption=START.format(GONI.mention or "can't mention", users, chats, UP), reply_markup=InlineKeyboardMarkup(START_BOT))
         await add_served_user(m.chat.id)
         keyboard = InlineKeyboardMarkup([[InlineKeyboardButton(f"{m.chat.first_name}", user_id=m.chat.id)]])
-        await nexichat.send_photo(int(OWNER_ID), photo=chat_photo, caption=f"{m.from_user.mention} ʜᴀs sᴛᴀʀᴛᴇᴅ ʙᴏᴛ. \n\n**ɴᴀᴍᴇ :** {m.chat.first_name}\n**ᴜsᴇʀɴᴀᴍᴇ :** @{m.chat.username}\n**ɪᴅ :** {m.chat.id}\n\n**ᴛᴏᴛᴀʟ ᴜsᴇʀs :** {users}", reply_markup=keyboard)
+        await GONI.send_photo(int(OWNER_ID), photo=chat_photo, caption=f"{m.from_user.mention} ʜᴀs sᴛᴀʀᴛᴇᴅ ʙᴏᴛ. \n\n**ɴᴀᴍᴇ :** {m.chat.first_name}\n**ᴜsᴇʀɴᴀᴍᴇ :** @{m.chat.username}\n**ɪᴅ :** {m.chat.id}\n\n**ᴛᴏᴛᴀʟ ᴜsᴇʀs :** {users}", reply_markup=keyboard)
         
     else:
         await m.reply_photo(
@@ -354,8 +354,8 @@ async def start(_, m: Message):
         await add_served_chat(m.chat.id)
 
 
-@nexichat.on_cmd("help")
-async def help(client: nexichat, m: Message):
+@GONI.on_cmd("help")
+async def help(client: GONI, m: Message):
     if m.chat.type == ChatType.PRIVATE:
         hmm = await m.reply_photo(
             photo=random.choice(IMG),
@@ -372,7 +372,7 @@ async def help(client: nexichat, m: Message):
         await add_served_chat(m.chat.id)
 
 
-@nexichat.on_cmd("repo")
+@GONI.on_cmd("repo")
 async def repo(_, m: Message):
     await m.reply_text(
         text=SOURCE_READ,
@@ -383,7 +383,7 @@ async def repo(_, m: Message):
 
 
 
-@nexichat.on_cmd("ping")
+@GONI.on_cmd("ping")
 async def ping(_, message: Message):
     start = datetime.now()
     UP, CPU, RAM, DISK = await bot_sys_stats()
@@ -394,7 +394,7 @@ async def ping(_, message: Message):
 
     ms = (datetime.now() - start).microseconds / 1000
     await loda.edit_text(
-        text=f"нey вαву!!\n{nexichat.name} ᴄʜᴀᴛʙᴏᴛ ιѕ alιve 🥀 αnd worĸιng ғιne wιтн a pιng oғ\n\n**➥** `{ms}` ms\n**➲ ᴄᴘᴜ:** {CPU}\n**➲ ʀᴀᴍ:** {RAM}\n**➲ ᴅɪsᴋ:** {DISK}\n**➲ ᴜᴘᴛɪᴍᴇ »** {UP}\n\n<b>||**๏ мαdє ωιтн ❣️ ву [ᴠɪᴘ ʙᴏʏ](https://t.me/{OWNER_USERNAME}) **||</b>",
+        text=f"нey вαву!!\n{GONI.name} ᴄʜᴀᴛʙᴏᴛ ιѕ alιve 🥀 αnd worĸιng ғιne wιтн a pιng oғ\n\n**➥** `{ms}` ms\n**➲ ᴄᴘᴜ:** {CPU}\n**➲ ʀᴀᴍ:** {RAM}\n**➲ ᴅɪsᴋ:** {DISK}\n**➲ ᴜᴘᴛɪᴍᴇ »** {UP}\n\n<b>||**๏ мαdє ωιтн ❣️ ву [ᴠɪᴘ ʙᴏʏ](https://t.me/{OWNER_USERNAME}) **||</b>",
         reply_markup=InlineKeyboardMarkup(PNG_BTN),
     )
     if message.chat.type == ChatType.PRIVATE:
@@ -403,7 +403,7 @@ async def ping(_, message: Message):
         await add_served_chat(message.chat.id)
 
 
-@nexichat.on_message(filters.command("stats"))
+@GONI.on_message(filters.command("stats"))
 async def stats(cli: Client, message: Message):
     users = len(await get_served_users())
     chats = len(await get_served_chats())
@@ -417,10 +417,10 @@ async def stats(cli: Client, message: Message):
 
 from pyrogram.enums import ParseMode
 
-from nexichat import nexichat
+from GONI import GONI
 
 
-@nexichat.on_cmd("id")
+@GONI.on_cmd("id")
 async def getid(client, message):
     chat = message.chat
     your_id = message.from_user.id
@@ -478,7 +478,7 @@ IS_BROADCASTING = False
 broadcast_lock = asyncio.Lock()
 
 
-@nexichat.on_message(
+@GONI.on_message(
     filters.command(["broadcast", "gcast"]) & filters.user(int(OWNER_ID))
 )
 async def broadcast_message(client, message):
@@ -547,11 +547,11 @@ async def broadcast_message(client, message):
                         continue
                     try:
                         if broadcast_type == "reply":
-                            m = await nexichat.forward_messages(
+                            m = await GONI.forward_messages(
                                 chat_id, message.chat.id, [broadcast_content.id]
                             )
                         else:
-                            m = await nexichat.send_message(
+                            m = await GONI.send_message(
                                 chat_id, text=broadcast_content
                             )
                         sent += 1
@@ -592,11 +592,11 @@ async def broadcast_message(client, message):
                     user_id = int(user["user_id"])
                     try:
                         if broadcast_type == "reply":
-                            m = await nexichat.forward_messages(
+                            m = await GONI.forward_messages(
                                 user_id, message.chat.id, [broadcast_content.id]
                             )
                         else:
-                            m = await nexichat.send_message(
+                            m = await GONI.send_message(
                                 user_id, text=broadcast_content
                             )
                         susr += 1
@@ -626,12 +626,12 @@ async def broadcast_message(client, message):
 from langdetect import detect, DetectorFactory, LangDetectException
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from nexichat.modules.helpers import languages
+from GONI.modules.helpers import languages
 DetectorFactory.seed = 0  
 
 from deep_translator import GoogleTranslator
 
-@nexichat.on_message(filters.command("check") & filters.reply)
+@GONI.on_message(filters.command("check") & filters.reply)
 async def check_language(client: Client, message: Message):
     reply_text = message.reply_to_message.text
     if not reply_text:

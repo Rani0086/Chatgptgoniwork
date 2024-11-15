@@ -1,8 +1,8 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from nexichat import nexichat as app
-from nexichat import nexichat, mongo, LOGGER, db
-from nexichat.modules.helpers import chatai, CHATBOT_ON, languages
+from GONI import GONI as app
+from GONI import GONI, mongo, LOGGER, db
+from GONI.modules.helpers import chatai, CHATBOT_ON, languages
 
 lang_db = db.ChatLangDb.LangCollection
 message_cache = {}

@@ -1,4 +1,4 @@
-from nexichat import CLONE_OWNERS
+from GONI import CLONE_OWNERS
 from config import OWNER_ID
 
 def is_owner(client, user_id):

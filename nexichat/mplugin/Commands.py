@@ -7,12 +7,12 @@ from pyrogram.errors import MessageEmpty
 from pyrogram.enums import ChatAction, ChatMemberStatus as CMS
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
 from deep_translator import GoogleTranslator
-from nexichat.database.chats import add_served_chat
-from nexichat.database.users import add_served_user
+from GONI.database.chats import add_served_chat
+from GONI.database.users import add_served_user
 from config import MONGO_URL
-from nexichat import nexichat, mongo, LOGGER, db
-from nexichat.mplugin.helpers import chatai, storeai, languages, CHATBOT_ON
-from nexichat.mplugin.helpers import (
+from GONI import GONI, mongo, LOGGER, db
+from GONI.mplugin.helpers import chatai, storeai, languages, CHATBOT_ON
+from GONI.mplugin.helpers import (
     ABOUT_BTN,
     ABOUT_READ,
     ADMIN_READ,

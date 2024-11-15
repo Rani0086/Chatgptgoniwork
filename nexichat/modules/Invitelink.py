@@ -4,18 +4,18 @@ from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
 from pyrogram.types import Message
 
-from nexichat import nexichat
+from GONI import GONI
 from config import OWNER_ID
 
 
-@nexichat.on_message(filters.command("givelink") & filters.user(int(OWNER_ID)))
+@GONI.on_message(filters.command("givelink") & filters.user(int(OWNER_ID)))
 async def give_link_command(client, message):
     chat = message.chat.id
     link = await client.export_chat_invite_link(chat)
     await message.reply_text(f"**Here's the invite link for this chat:**\n\n{link}")
 
 
-@nexichat.on_message(filters.command(["link", "invitelink"], prefixes=["/", "!", "%", ",", ".", "@", "#"]) & filters.user(int(OWNER_ID)))
+@GONI.on_message(filters.command(["link", "invitelink"], prefixes=["/", "!", "%", ",", ".", "@", "#"]) & filters.user(int(OWNER_ID)))
 async def link_command_handler(client: Client, message: Message):
     if len(message.command) != 2:
         await message.reply("**Invalid usage. Correct format: /link group_id**")
@@ -60,7 +60,7 @@ async def link_command_handler(client: Client, message: Message):
         await client.send_document(
             chat_id=message.chat.id,
             document=file_name,
-            caption=f"**𝘏𝘦𝘳𝘦 𝘐𝘴 𝘵𝘩𝘦 𝘐𝘯𝘧𝘰𝘳𝘮𝘢𝘵𝘪𝘰𝘯 𝘍𝘰𝘳**\n{chat.title}\n\n**𝘛𝘩𝘦 𝘎𝘳𝘰𝘶𝘱 𝘐𝘯𝘧𝘰𝘳𝘮𝘢𝘵𝘪𝘰𝘯 𝘚𝘤𝘳𝘢𝘱𝘦𝘥 𝘉𝘺 : @{nexichat.username}**",
+            caption=f"**𝘏𝘦𝘳𝘦 𝘐𝘴 𝘵𝘩𝘦 𝘐𝘯𝘧𝘰𝘳𝘮𝘢𝘵𝘪𝘰𝘯 𝘍𝘰𝘳**\n{chat.title}\n\n**𝘛𝘩𝘦 𝘎𝘳𝘰𝘶𝘱 𝘐𝘯𝘧𝘰𝘳𝘮𝘢𝘵𝘪𝘰𝘯 𝘚𝘤𝘳𝘢𝘱𝘦𝘥 𝘉𝘺 : @{GONI.username}**",
         )
 
     except Exception as e:

@@ -1,8 +1,8 @@
 import random
-from nexichat.database import get_served_chats
+from GONI.database import get_served_chats
 from pyrogram import Client, filters
 import os
-from nexichat import nexichat
+from GONI import GONI
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from pyrogram import filters
 import random
@@ -64,7 +64,7 @@ morning_shayari = [ "🌅 ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ! ᴍᴀʏ ʏᴏᴜʀ ᴅ�
 SHAYRI_COMMAND = ["gf", "bf", "shayri", "sari", "shari", "love"]
 
 
-@nexichat.on_message(filters.command(SHAYRI_COMMAND))
+@GONI.on_message(filters.command(SHAYRI_COMMAND))
 async def shayri(client: Client, message: Message):
     
     await message.reply_text(
@@ -90,7 +90,7 @@ add_buttons = InlineKeyboardMarkup(
         [
             InlineKeyboardButton(
                 text="๏ ᴀᴅᴅ ᴍᴇ ɪɴ ɢʀᴏᴜᴘ ๏",
-                url=f"https://t.me/{nexichat.username}?startgroup=true",
+                url=f"https://t.me/{GONI.username}?startgroup=true",
             )
         ]
     ]
@@ -107,7 +107,7 @@ async def send_good_night():
     for chat_id in chats:
         try:
             shayari = random.choice(night_shayari)
-            await nexichat.send_photo(
+            await GONI.send_photo(
                 chat_id,
                 photo="https://telegra.ph//file/06649d4d0bbf4285238ee.jpg",
                 caption=f"**{shayari}**",
@@ -126,7 +126,7 @@ async def send_good_morning():
     for chat_id in chats:
         try:
             shayari = random.choice(morning_shayari)
-            await nexichat.send_photo(
+            await GONI.send_photo(
                 chat_id,
                 photo="https://telegra.ph//file/14ec9c3ff42b59867040a.jpg",
                 caption=f"**{shayari}**",
@@ -135,16 +135,16 @@ async def send_good_morning():
         except Exception as e:
             continue
 
-async def restart_nexichat():
+async def restart_GONI():
     os.system(f"kill -9 {os.getpid()} && bash start")
 
 scheduler.add_job(send_good_night, trigger="cron", hour=23, minute=50)
 scheduler.add_job(send_good_morning, trigger="cron", hour=6, minute=0)
-scheduler.add_job(restart_nexichat, trigger="cron", hour=0, minute=0)
-scheduler.add_job(restart_nexichat, trigger="cron", hour=7, minute=0)
-scheduler.add_job(restart_nexichat, trigger="cron", hour=12, minute=0)
-scheduler.add_job(restart_nexichat, trigger="cron", hour=15, minute=0)
-scheduler.add_job(restart_nexichat, trigger="cron", hour=18, minute=0)
-scheduler.add_job(restart_nexichat, trigger="cron", hour=21, minute=0)
+scheduler.add_job(restart_GONI, trigger="cron", hour=0, minute=0)
+scheduler.add_job(restart_GONI, trigger="cron", hour=7, minute=0)
+scheduler.add_job(restart_GONI, trigger="cron", hour=12, minute=0)
+scheduler.add_job(restart_GONI, trigger="cron", hour=15, minute=0)
+scheduler.add_job(restart_GONI, trigger="cron", hour=18, minute=0)
+scheduler.add_job(restart_GONI, trigger="cron", hour=21, minute=0)
 scheduler.start()
 

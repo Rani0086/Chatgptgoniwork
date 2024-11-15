@@ -1,7 +1,7 @@
 from pyrogram.types import InlineKeyboardButton
 
 from config import SUPPORT_GRP, UPDATE_CHNL
-from nexichat import OWNER, nexichat
+from GONI import OWNER, GONI
 
 
 START_BOT = [
@@ -16,7 +16,7 @@ DEV_OP = [
     [
         InlineKeyboardButton(
             text="✦ ᴀᴅᴅ ᴍᴇ ʙᴀʙʏ ✦",
-            url=f"https://t.me/{nexichat.username}?startgroup=true",
+            url=f"https://t.me/{GONI.username}?startgroup=true",
         ),
     ],
     [

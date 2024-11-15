@@ -4,22 +4,22 @@ import random
 import time
 import psutil
 import config
-from nexichat import _boot_
-from nexichat import get_readable_time
-from nexichat.mplugin.helpers import is_owner
-from nexichat import mongo
+from GONI import _boot_
+from GONI import get_readable_time
+from GONI.mplugin.helpers import is_owner
+from GONI import mongo
 from datetime import datetime
 from pymongo import MongoClient
 from pyrogram.enums import ChatType
 from pyrogram import Client, filters
-from nexichat import CLONE_OWNERS
+from GONI import CLONE_OWNERS
 from config import OWNER_ID, MONGO_URL, OWNER_USERNAME
 from pyrogram.errors import FloodWait, ChatAdminRequired
-from nexichat.database.chats import get_served_chats, add_served_chat
-from nexichat.database.users import get_served_users, add_served_user
-from nexichat.database.clonestats import get_served_cchats, get_served_cusers, add_served_cuser, add_served_cchat
+from GONI.database.chats import get_served_chats, add_served_chat
+from GONI.database.users import get_served_users, add_served_user
+from GONI.database.clonestats import get_served_cchats, get_served_cusers, add_served_cuser, add_served_cchat
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery
-from nexichat.mplugin.helpers import (
+from GONI.mplugin.helpers import (
     START,
     START_BOT,
     PNG_BTN,
@@ -72,7 +72,7 @@ IMG = [
 
 
 
-from nexichat import db
+from GONI import db
 
 chatai = db.Word.WordDb
 lang_db = db.ChatLangDb.LangCollection
@@ -380,7 +380,7 @@ async def stats(cli: Client, message: Message):
 
 from pyrogram.enums import ParseMode
 
-from nexichat import nexichat
+from GONI import GONI
 
 
 @Client.on_message(filters.command("id"))

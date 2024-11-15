@@ -1,4 +1,4 @@
-from nexichat import db
+from GONI import db
 
 usersdb = db.users
 

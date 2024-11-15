@@ -1,10 +1,10 @@
 import random
-from nexichat.database import get_served_chats
+from GONI.database import get_served_chats
 from pyrogram import Client
 from pyrogram import filters
 import os
-from nexichat.mplugin.helpers import is_owner
-from nexichat import nexichat
+from GONI.mplugin.helpers import is_owner
+from GONI import GONI
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from pyrogram import filters
 import random

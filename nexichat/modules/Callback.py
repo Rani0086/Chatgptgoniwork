@@ -5,17 +5,17 @@ from pyrogram.errors import MessageEmpty
 from pyrogram.enums import ChatAction
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from deep_translator import GoogleTranslator
-from nexichat.database.chats import add_served_chat
-from nexichat.database.users import add_served_user
+from GONI.database.chats import add_served_chat
+from GONI.database.users import add_served_user
 from config import MONGO_URL
-from nexichat import nexichat, mongo
+from GONI import GONI, mongo
 from pyrogram.enums import ChatMemberStatus as CMS
 from pyrogram.types import CallbackQuery
 import asyncio
 import config
-from nexichat import LOGGER, nexichat, db
-from nexichat.modules.helpers import chatai
-from nexichat.modules.helpers import (
+from GONI import LOGGER, GONI, db
+from GONI.modules.helpers import chatai
+from GONI.modules.helpers import (
     ABOUT_BTN,
     ABOUT_READ,
     ADMIN_READ,
@@ -49,7 +49,7 @@ def generate_language_buttons(languages):
     return InlineKeyboardMarkup(buttons)
 
 
-@nexichat.on_callback_query()
+@GONI.on_callback_query()
 async def cb_handler(client: Client, query: CallbackQuery):
     LOGGER.info(query.data)
 

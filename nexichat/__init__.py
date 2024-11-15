@@ -35,10 +35,10 @@ def dbb():
 
 
 
-class nexichat(Client):
+class GONI(Client):
     def __init__(self):
         super().__init__(
-            name="nexichat",
+            name="GONI",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             #lang_code="nolang",
@@ -81,4 +81,4 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-nexichat = nexichat()
+GONI = GONI()

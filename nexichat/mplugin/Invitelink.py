@@ -3,8 +3,8 @@ import os
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
 from pyrogram.types import Message
-from nexichat.mplugin.helpers import is_owner
-from nexichat import nexichat
+from GONI.mplugin.helpers import is_owner
+from GONI import GONI
 from config import OWNER_ID
 
 

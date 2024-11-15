@@ -6,13 +6,13 @@ import threading
 from pyrogram import idle
 from pyrogram.types import BotCommand
 from config import OWNER_ID
-from nexichat import LOGGER, nexichat
-from nexichat.modules import ALL_MODULES
-from nexichat.modules.Clone import restart_bots
+from GONI import LOGGER, GONI
+from GONI.modules import ALL_MODULES
+from GONI.modules.Clone import restart_bots
 
 async def anony_boot():
     try:
-        await nexichat.start()
+        await GONI.start()
         
         
         asyncio.create_task(restart_bots())
@@ -21,12 +21,12 @@ async def anony_boot():
         LOGGER.error(ex)
 
     for all_module in ALL_MODULES:
-        importlib.import_module("nexichat.modules." + all_module)
+        importlib.import_module("GONI.modules." + all_module)
         LOGGER.info(f"Successfully imported : {all_module}")
 
     
     try:
-        await nexichat.set_bot_commands(
+        await GONI.set_bot_commands(
             commands=[
                 BotCommand("start", "Start the bot"),
                 BotCommand("help", "Get the help menu"),
@@ -47,11 +47,11 @@ async def anony_boot():
     except Exception as ex:
         LOGGER.error(f"Failed to set bot commands: {ex}")
     
-    LOGGER.info(f"@{nexichat.username} Started.")
+    LOGGER.info(f"@{GONI.username} Started.")
     try:
-        await nexichat.send_message(int(OWNER_ID), f"{nexichat.mention} has started")
+        await GONI.send_message(int(OWNER_ID), f"{GONI.mention} has started")
     except Exception as ex:
-        LOGGER.info(f"@{nexichat.username} Started, please start the bot from owner id.")
+        LOGGER.info(f"@{GONI.username} Started, please start the bot from owner id.")
     
     await idle()
 
@@ -72,4 +72,4 @@ if __name__ == "__main__":
 
     # Start the bot asynchronously
     asyncio.get_event_loop().run_until_complete(anony_boot())
-    LOGGER.info("Stopping nexichat Bot...")
+    LOGGER.info("Stopping GONI Bot...")
