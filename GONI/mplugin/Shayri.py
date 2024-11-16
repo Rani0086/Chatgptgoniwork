@@ -73,8 +73,8 @@ async def shayri(client: Client, message: Message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("✨𝚂𝚄𝙿𝙿𝙾𝚁𝚃✨", url="https://t.me/TG_FRIENDSS"),
-                    InlineKeyboardButton("✨𝙾𝙵𝙵𝙸𝙲𝙴✨", url="https://t.me/VIP_CREATORS"),
+                    InlineKeyboardButton("✨𝚂𝚄𝙿𝙿𝙾𝚁𝚃✨", url="https://t.me/lolpagalokigc"),
+                    InlineKeyboardButton("✨𝙾𝙵𝙵𝙸𝙲𝙴✨", url="https://t.me/Planetsadala"),
                 ]
            ]
         ),
@@ -93,7 +93,7 @@ async def send_good_night():
             shayari = random.choice(night_shayari)
             await client.send_photo(
                 chat_id,
-                photo="https://telegra.ph//file/06649d4d0bbf4285238ee.jpg",
+                photo="https://files.catbox.moe/iz3d3a.jpg",
                 caption=f"**{shayari}**",
                 reply_markup=add_buttons,
             )
@@ -112,7 +112,7 @@ async def send_good_morning():
             shayari = random.choice(morning_shayari)
             await client.send_photo(
                 chat_id,
-                photo="https://telegra.ph//file/14ec9c3ff42b59867040a.jpg",
+                photo="https://files.catbox.moe/n4qv2v.jpg",
                 caption=f"**{shayari}**",
                 reply_markup=add_buttons,
             )
